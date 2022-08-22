@@ -24,7 +24,7 @@ services:
       - NORDVPN_CATEGORY=legacy_p2p
       - NORDVPN_PROTOCOL=udp
       - LOCAL_NETWORK=${LOCAL_NETWORK}
-      - TRANSMISSION_WEB_UI=flood-for-transmission
+      - TRANSMISSION_WEB_UI=${TRANSMISSION_WEB_UI}
       - CREATE_TUN_DEVICE=false
       - OPENVPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60
       - TRANSMISSION_DOWNLOAD_DIR=/nas/downloads/complete

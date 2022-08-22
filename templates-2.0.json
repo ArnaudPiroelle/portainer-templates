@@ -336,11 +336,11 @@
           },
           {
             "name": "TRANSMISSION_USERNAME",
-            "label": "NordVPN username"
+            "label": "Transmission username"
           },
           {
             "name": "TRANSMISSION_PASSWORD",
-            "label": "NordVPN password"
+            "label": "Transmission password"
           },
           {
             "name": "LOCAL_NETWORK",

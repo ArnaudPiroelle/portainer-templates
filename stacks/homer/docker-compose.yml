@@ -1,0 +1,27 @@
+---
+version: "3.8"
+services:
+  homer:
+    container_name: homer
+    image: b4bz/homer:latest
+    networks:
+      - default
+      - lb-network
+    volumes:
+      - ${DOCKER_DATA_FOLDER:-/data}/homer/:/www/assets
+
+    restart: unless-stopped
+
+  homer-discovery:
+    image: ghcr.io/calvinbui/homer-service-discovery
+    container_name: homer-discovery
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${DOCKER_DATA_FOLDER:-/data}/homer/config.yml:/config.yml
+      - ${DOCKER_DATA_FOLDER:-/data}/homer-discovery/base.yml:/base.yml
+    restart: unless-stopped
+
+networks:
+  default:
+  lb-network:
+    external: true

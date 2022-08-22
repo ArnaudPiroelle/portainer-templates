@@ -1,6 +1,25 @@
 {
     "version": "2",
     "templates": [
-     
+      {
+        "type": 3,
+        "title": "Homer",
+        "description": "Homer dashboard with service discovery",
+        "categories": ["dashboard", "discovery"],
+        "platform": "linux",
+        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/homer/logo.png",        
+        "repository": {
+          "url": "https://github.com/ArnaudPiroelle/portainer-templates",
+          "stackfile": "stacks/homer/docker-compose.yml"
+        },
+        "env": [
+          {
+            "name": "DOCKER_DATA_FOLDER",
+            "label": "Docker host folder",
+            "description": "Host folder where containers will store data",
+            "default": "/data"
+          }
+        ]
+      }
     ]
 }

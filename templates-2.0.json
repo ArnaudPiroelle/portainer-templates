@@ -343,13 +343,60 @@
             "label": "NordVPN password"
           },
           {
-            "name": "LOCAL_NETWORK_MASK",
-            "label": "Local network mask"
+            "name": "LOCAL_NETWORK",
+            "label": "Local network"
           },
           {
             "name": "TRANSMISSION_WEB_UI",
             "label": "Transmission WebUI",
             "default": "flood-for-transmission"
+          },
+          {
+            "name": "HOST_TAG",
+            "label": "Host tag",
+            "description": "Tag used to identify host in dashboard",
+            "default": "TheBeast"
+          },
+          {
+            "name": "PUBLIC_DOMAIN",
+            "label": "Public domain",
+            "description": "Public domain use to generate dashboard link",
+            "default": "arnaudpiroelle.com"
+          }
+        ]
+      },
+      {
+        "type": 3,
+        "title": "VS Code Server",
+        "description": "Remote Code Server",
+        "categories": ["editor"],
+        "platform": "linux",
+        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/vscode/logo.png",        
+        "repository": {
+          "url": "https://github.com/ArnaudPiroelle/portainer-templates",
+          "stackfile": "stacks/vscode/docker-compose.yml"
+        },
+        "env": [
+          {
+            "name": "DOCKER_DATA_FOLDER",
+            "label": "Docker host folder",
+            "description": "Host folder where containers will store data",
+            "default": "/data"
+          },
+          {
+            "name": "PUID",
+            "label": "User ID",
+            "default": "1000"
+          },
+          {
+            "name": "PGID",
+            "label": "User Group ID",
+            "default": "1000"
+          },
+          {
+            "name": "TZ",
+            "label": "Timezone",
+            "default": "Europe/Paris"
           },
           {
             "name": "HOST_TAG",

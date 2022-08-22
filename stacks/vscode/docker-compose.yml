@@ -1,0 +1,37 @@
+---
+version: "3.8"
+services:
+  vscode:
+    image: ghcr.io/linuxserver/code-server:latest
+    container_name: code-server
+    networks:
+      - default
+      - lb-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - DOCKER_MODS=linuxserver/mods:code-server-docker
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/vscode:/config
+      - ${DOCKER_DATA_FOLDER}:/data
+      - /docker-configs:/docker-configs
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8002:8443
+    labels:
+      - "homer.enable=true"
+      - "homer.service=Tools"
+      - "homer.name=VSCode"
+      - "homer.subtitle=Remote VS Code Editor"
+      - "homer.logo=assets/tools/vscode.svg"
+      - "homer.target=_blank"
+      - "homer.priority=2"
+      - "homer.tag=${HOST_TAG}"
+      - "homer.url= https://code.${PUBLIC_DOMAIN}"
+    restart: unless-stopped
+    
+networks:
+  default:
+  lb-network:
+    external: true

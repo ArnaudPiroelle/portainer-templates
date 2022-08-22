@@ -1,0 +1,69 @@
+---
+version: "3.8"
+services:
+  mediaserver:
+    container_name: plex
+    image: lscr.io/linuxserver/plex:latest
+    hostname: ${HOST_NAME}
+    network_mode: host
+    runtime: nvidia
+    restart: unless-stopped
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/plex/config:/config
+      - ${DOCKER_DATA_FOLDER}/plex/transcode:/transcode
+      - nas:/nas
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - ADVERTISE_IP=${HOST_IP}
+      - PLEX_CLAIM=${PLEX_CLAIM}
+      - NVIDIA_VISIBLE_DEVICES=all
+    labels:
+      - "homer.enable=true"
+      - "homer.service=Media"
+      - "homer.name=Plex"
+      - "homer.subtitle=Plex Media Server"
+      - "homer.logo=assets/tools/plex.png"
+      - "homer.target=_blank"
+      - "homer.priority=2"
+      - "homer.tag=${HOST_TAG}"
+      - "homer.url= https://plex.${PUBLIC_DOMAIN}"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+
+  tautulli:
+    image: lscr.io/linuxserver/tautulli:develop
+    container_name: tautulli
+    networks:
+      - default
+      - lb-network
+    restart: unless-stopped
+    volumes:
+      - /data/tautulli:/config
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    labels:
+      - "homer.enable=true"
+      - "homer.service=Monitoring"
+      - "homer.name=Tautulli"
+      - "homer.subtitle=Plex Activity Monitor"
+      - "homer.logo=assets/tools/tautulli.png"
+      - "homer.target=_blank"
+      - "homer.priority=2"
+      - "homer.tag=${HOST_TAG}"
+      - "homer.url= https://tautulli.${PUBLIC_DOMAIN}"
+      
+volumes:
+  nas:
+    external: true
+    
+networks:
+  default:
+  lb-network:
+    external: true

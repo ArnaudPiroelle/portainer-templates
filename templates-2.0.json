@@ -411,6 +411,19 @@
             "default": "arnaudpiroelle.com"
           }
         ]
+      },
+      {
+        "type": 3,
+        "title": "Watchtower",
+        "description": "Automatic docker image updater",
+        "categories": ["update"],
+        "platform": "linux",
+        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/watchtower/logo.png",        
+        "repository": {
+          "url": "https://github.com/ArnaudPiroelle/portainer-templates",
+          "stackfile": "stacks/watchtower/docker-compose.yml"
+        },
+        "env": []
       }
     ]
 }

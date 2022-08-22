@@ -1,0 +1,26 @@
+---
+version: "3.8"
+services:
+  swag:
+    image: lscr.io/linuxserver/swag
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - URL=${PUBLIC_DOMAIN}
+      - SUBDOMAINS=wildcard
+      - VALIDATION=dns
+      - DNSPLUGIN=ovh
+      - EMAIL=${EMAIL}
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/swag/config:/config
+    ports:
+      - 443:443
+    restart: unless-stopped
+    
+networks:
+  default:
+    name: lb-network

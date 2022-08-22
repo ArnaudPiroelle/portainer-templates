@@ -307,6 +307,63 @@
             "default": "arnaudpiroelle.com"
           }
         ]
+      },
+      {
+        "type": 3,
+        "title": "Transmission",
+        "description": "Transmission over VPN (NordVPN)",
+        "categories": ["torrent", "download", "vpn"],
+        "platform": "linux",
+        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/transmission/logo.png",        
+        "repository": {
+          "url": "https://github.com/ArnaudPiroelle/portainer-templates",
+          "stackfile": "stacks/transmission/docker-compose.yml"
+        },
+        "env": [
+          {
+            "name": "DOCKER_DATA_FOLDER",
+            "label": "Docker host folder",
+            "description": "Host folder where containers will store data",
+            "default": "/data"
+          },
+          {
+            "name": "NORDVPN_USERNAME",
+            "label": "NordVPN username"
+          },
+          {
+            "name": "NORDVPN_PASSWORD",
+            "label": "NordVPN password"
+          },
+          {
+            "name": "TRANSMISSION_USERNAME",
+            "label": "NordVPN username"
+          },
+          {
+            "name": "TRANSMISSION_PASSWORD",
+            "label": "NordVPN password"
+          },
+          {
+            "name": "LOCAL_NETWORK_MASK",
+            "label": "Local network mask"
+          },
+          {
+            "name": "TRANSMISSION_WEB_UI",
+            "label": "Transmission WebUI",
+            "default": "flood-for-transmission"
+          },
+          {
+            "name": "HOST_TAG",
+            "label": "Host tag",
+            "description": "Tag used to identify host in dashboard",
+            "default": "TheBeast"
+          },
+          {
+            "name": "PUBLIC_DOMAIN",
+            "label": "Public domain",
+            "description": "Public domain use to generate dashboard link",
+            "default": "arnaudpiroelle.com"
+          }
+        ]
       }
     ]
 }

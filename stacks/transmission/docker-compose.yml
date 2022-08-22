@@ -1,0 +1,53 @@
+---
+version: "3.8"
+services:
+  transmission-openvpn:
+    image: haugene/transmission-openvpn
+    container_name: transmission
+    networks:
+      - lb-network
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/transmission:/data
+      - nas:/nas
+    environment:
+      - OPENVPN_PROVIDER=NORDVPN
+      - OPENVPN_USERNAME=${NORDVPN_USERNAME}
+      - OPENVPN_PASSWORD=${NORDVPN_PASSWORD}
+      - NORDVPN_COUNTRY=FR
+      - NORDVPN_CATEGORY=legacy_p2p
+      - NORDVPN_PROTOCOL=udp
+      - LOCAL_NETWORK=${LOCAL_NETWORK}
+      - TRANSMISSION_WEB_UI=flood-for-transmission
+      - CREATE_TUN_DEVICE=false
+      - OPENVPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60
+      - TRANSMISSION_DOWNLOAD_DIR=/nas/downloads/complete
+      - TRANSMISSION_INCOMPLETE_DIR=/nas/downloads/incomplete
+      - TRANSMISSION_RPC_USERNAME=${TRANSMISSION_USERNAME}
+      - TRANSMISSION_RPC_PASSWORD=${TRANSMISSION_PASSWORD}
+    labels:
+      - "homer.enable=true"
+      - "homer.service=Downloads"
+      - "homer.name=Transmission"
+      - "homer.subtitle=Transmission Over VPN"
+      - "homer.logo=assets/tools/flood.png"
+      - "homer.target=_blank"
+      - "homer.priority=2"
+      - "homer.tag=${HOST_TAG}"
+      - "homer.url= https://transmission.${PUBLIC_DOMAIN}/transmission/web/"
+    restart: unless-stopped
+
+volumes:
+  nas:
+    external: true
+    
+networks:
+  default:
+  lb-network:
+    external: true

@@ -46,8 +46,6 @@ services:
     volumes:
       - ${DOCKER_DATA_FOLDER}/radarr:/config
       - nas:/nas
-    ports:
-      - 7878:7878
     labels:
       - "homer.enable=true"
       - "homer.service=PVR"
@@ -72,8 +70,6 @@ services:
       - TZ=${TZ}
     volumes:
       - ${DOCKER_DATA_FOLDER}/prowlarr:/config
-    ports:
-      - 9696:9696
     labels:
       - "homer.enable=true"
       - "homer.service=PVR"
@@ -99,8 +95,6 @@ services:
     volumes:
       - ${DOCKER_DATA_FOLDER}/bazarr:/config
       - nas:/nas
-    ports:
-      - 6767:6767
     labels:
       - "homer.enable=true"
       - "homer.service=PVR"
@@ -126,8 +120,6 @@ services:
     volumes:
       - ${DOCKER_DATA_FOLDER}/readarr:/config
       - nas:/nas
-    ports:
-      - 8787:8787
     restart: unless-stopped
     labels:
       - "homer.enable=true"
@@ -153,8 +145,6 @@ services:
     volumes:
       - ${DOCKER_DATA_FOLDER}/lidarr:/config
       - nas:/nas
-    ports:
-      - 8686:8686
     restart: unless-stopped
     labels:
       - "homer.enable=true"

@@ -11,8 +11,6 @@ services:
     volumes:
       - nas:/nas
       - ${DOCKER_DATA_FOLDER}/komga:/config
-    ports:
-      - 8080:8080
     labels:
       - "homer.enable=true"
       - "homer.service=Media"

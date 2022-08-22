@@ -1,0 +1,27 @@
+---
+version: "3.8"
+services:
+  dozzle:
+    image: amir20/dozzle:latest
+    container_name: dozzle
+    networks:
+      - default
+      - lb-network
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - "homer.enable=true"
+      - "homer.service=Monitoring"
+      - "homer.name=Dozzle"
+      - "homer.subtitle=Docker Logs Service"
+      - "homer.logo=assets/tools/dozzle.png"
+      - "homer.tag=${HOST_TAG}"
+      - "homer.target=_blank"
+      - "homer.url=https://dozzle.${PUBLIC_DOMAIN}"
+      - "homer.priority=2"
+    restart: unless-stopped
+    
+networks:
+  default:
+  lb-network:
+    external: true

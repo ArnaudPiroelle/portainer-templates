@@ -1,0 +1,34 @@
+---
+version: "3.8"
+services:
+  komga:
+    image: gotson/komga:latest
+    container_name: komga
+    user: "${PUID}:${PGID}"
+    networks:
+      - default
+      - lb-network
+    volumes:
+      - nas:/nas
+      - ${DOCKER_DATA_FOLDER}/komga:/config
+    ports:
+      - 8080:8080
+    labels:
+      - "homer.enable=true"
+      - "homer.service=Media"
+      - "homer.name=Komga"
+      - "homer.subtitle=Manga Collection Manager"
+      - "homer.logo=assets/tools/komga.png"
+      - "homer.target=_blank"
+      - "homer.tag=${HOST_TAG}"
+      - "homer.url= https://komga.${PUBLIC_DOMAIN}"
+    restart: unless-stopped
+
+volumes:
+  nas:
+    external: true
+    
+networks:
+  default:
+  lb-network:
+    external: true

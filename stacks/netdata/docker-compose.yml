@@ -1,0 +1,43 @@
+---
+version: "3.8"
+services:
+  netdata:
+    image: netdata/netdata
+    container_name: netdata
+    networks:
+      - default
+      - lb-network
+    runtime: nvidia
+    restart: unless-stopped
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/netdata/etc:/etc/netdata
+      - /etc/passwd:/host/etc/passwd:ro
+      - /etc/group:/host/etc/group:ro
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/os-release:/host/etc/os-release:ro
+    labels:
+      - "homer.enable=true"
+      - "homer.service=Monitoring"
+      - "homer.name=Netdata"
+      - "homer.subtitle=Monitoring Service"
+      - "homer.logo=assets/tools/netdata.png"
+      - "homer.target=_blank"
+      - "homer.priority=2"
+      - "homer.tag=${HOST_TAG}"
+      - "homer.url= https://netdata.${PUBLIC_DOMAIN}"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+            
+networks:
+  default:
+  lb-network:
+    external: true

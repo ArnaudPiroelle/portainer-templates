@@ -173,7 +173,7 @@
         "description": "Media requester",
         "categories": ["pvr", "requester"],
         "platform": "linux",
-        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/overseerr/logo.svg",        
+        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/overseerr/logo.png",        
         "repository": {
           "url": "https://github.com/ArnaudPiroelle/portainer-templates",
           "stackfile": "stacks/overseerr/docker-compose.yml"
@@ -209,5 +209,42 @@
           }
         ]
       },
+      {
+        "type": 3,
+        "title": "Pi-hole",
+        "description": "Network-wide Ad Blocking",
+        "categories": ["dns", "ad-blocker"],
+        "platform": "linux",
+        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/pihole/logo.webp",        
+        "repository": {
+          "url": "https://github.com/ArnaudPiroelle/portainer-templates",
+          "stackfile": "stacks/pihole/docker-compose.yml"
+        },
+        "env": [
+          {
+            "name": "DOCKER_DATA_FOLDER",
+            "label": "Docker host folder",
+            "description": "Host folder where containers will store data",
+            "default": "/data"
+          },
+          {
+            "name": "TZ",
+            "label": "Timezone",
+            "default": "Europe/Paris"
+          },      
+          {
+            "name": "HOST_TAG",
+            "label": "Host tag",
+            "description": "Tag used to identify host in dashboard",
+            "default": "TheBeast"
+          },
+          {
+            "name": "PUBLIC_DOMAIN",
+            "label": "Public domain",
+            "description": "Public domain use to generate dashboard link",
+            "default": "arnaudpiroelle.com"
+          }
+        ]
+      }
     ]
 }

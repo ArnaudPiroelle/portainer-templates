@@ -3,6 +3,10 @@ version: "3.8"
 services:
   gitea:
     image: gitea/gitea
+    container_name: gitea
+    networks:
+      - default
+      - lb-network
     environment:
       - USER_UID=${PUID}
       - USER_GID=${PGID}
@@ -23,3 +27,8 @@ services:
       - "homer.tag=${HOST_TAG}"
       - "homer.url= https://git.${PUBLIC_DOMAIN}"
     restart: unless-stopped
+
+networks:
+  default:
+  lb-network:
+    external: true

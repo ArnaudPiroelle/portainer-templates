@@ -287,7 +287,7 @@
           },
           {
             "name": "HOST_IP",
-            "label": "Hostname",
+            "label": "Host IP",
             "description": "Used to advertise plex server address ip"
           },    
           {

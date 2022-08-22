@@ -1,0 +1,25 @@
+---
+version: "3.8"
+services:
+  gitea:
+    image: gitea/gitea
+    environment:
+      - USER_UID=${PUID}
+      - USER_GID=${PGID}
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/gitea:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 2222:22
+    labels:
+      - "homer.enable=true"
+      - "homer.service=Tools"
+      - "homer.name=Gitea"
+      - "homer.subtitle=Self-hosted git server"
+      - "homer.logo=assets/tools/gitea.png"
+      - "homer.target=_blank"
+      - "homer.priority=2"
+      - "homer.tag=${HOST_TAG}"
+      - "homer.url= https://git.${PUBLIC_DOMAIN}"
+    restart: unless-stopped

@@ -424,6 +424,36 @@
           "stackfile": "stacks/watchtower/docker-compose.yml"
         },
         "env": []
+      },
+      {
+        "type": 3,
+        "title": "Gitea",
+        "description": "Self-hosted git server",
+        "categories": ["git"],
+        "platform": "linux",
+        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/gitea/logo.png",        
+        "repository": {
+          "url": "https://github.com/ArnaudPiroelle/portainer-templates",
+          "stackfile": "stacks/gitea/docker-compose.yml"
+        },
+        "env": [
+          {
+            "name": "DOCKER_DATA_FOLDER",
+            "label": "Docker host folder",
+            "description": "Host folder where containers will store data",
+            "default": "/data"
+          },
+          {
+            "name": "PUID",
+            "label": "User ID",
+            "default": "1000"
+          },
+          {
+            "name": "PGID",
+            "label": "User Group ID",
+            "default": "1000"
+          }
+        ]
       }
     ]
 }

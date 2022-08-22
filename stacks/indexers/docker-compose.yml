@@ -1,0 +1,177 @@
+---
+version: "3.8"
+services:
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    restart: unless-stopped
+    
+  sonarr:
+    image: ghcr.io/linuxserver/sonarr:develop
+    container_name: sonarr
+    networks:
+      - default
+      - lb-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK=022
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/sonarr:/config
+      - nas:/nas
+    labels:
+      - "homer.enable=true"
+      - "homer.service=PVR"
+      - "homer.name=Sonarr"
+      - "homer.subtitle=TV Show Collection Manager"
+      - "homer.logo=assets/tools/sonarr.png"
+      - "homer.target=_blank"
+      - "homer.priority=2"
+      - "homer.tag=${HOST_TAG}"
+      - "homer.url= https://sonarr.${PUBLIC_DOMAIN}"
+    restart: unless-stopped
+    
+  radarr:
+    image: ghcr.io/linuxserver/radarr:nightly
+    container_name: radarr
+    networks:
+      - default
+      - lb-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK=022
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/radarr:/config
+      - nas:/nas
+    ports:
+      - 7878:7878
+    labels:
+      - "homer.enable=true"
+      - "homer.service=PVR"
+      - "homer.name=Radarr"
+      - "homer.subtitle=Movie Collection Manager"
+      - "homer.logo=assets/tools/radarr.png"
+      - "homer.target=_blank"
+      - "homer.priority=2"
+      - "homer.tag=${HOST_TAG}"
+      - "homer.url= https://radarr.${PUBLIC_DOMAIN}"
+    restart: unless-stopped
+    
+  prowlarr:
+    image: ghcr.io/linuxserver/prowlarr:develop
+    container_name: prowlarr
+    networks:
+      - default
+      - lb-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/prowlarr:/config
+    ports:
+      - 9696:9696
+    labels:
+      - "homer.enable=true"
+      - "homer.service=PVR"
+      - "homer.name=Prowlarr"
+      - "homer.subtitle=Indexers Management"
+      - "homer.logo=assets/tools/prowlarr.png"
+      - "homer.target=_blank"
+      - "homer.priority=3"
+      - "homer.tag=${HOST_TAG}"
+      - "homer.url= https://prowlarr.${PUBLIC_DOMAIN}"
+    restart: unless-stopped
+    
+  bazarr:
+    image: ghcr.io/linuxserver/bazarr
+    container_name: bazarr
+    networks:
+      - default
+      - lb-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/bazarr:/config
+      - nas:/nas
+    ports:
+      - 6767:6767
+    labels:
+      - "homer.enable=true"
+      - "homer.service=PVR"
+      - "homer.name=Bazarr"
+      - "homer.subtitle=Subtitles Collection Manager"
+      - "homer.logo=assets/tools/bazarr.png"
+      - "homer.target=_blank"
+      - "homer.priority=1"
+      - "homer.tag=${HOST_TAG}"
+      - "homer.url= https://bazarr.${PUBLIC_DOMAIN}"
+    restart: unless-stopped
+
+  readarr:
+    image: lscr.io/linuxserver/readarr:nightly
+    container_name: readarr
+    networks:
+      - default
+      - lb-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/readarr:/config
+      - nas:/nas
+    ports:
+      - 8787:8787
+    restart: unless-stopped
+    labels:
+      - "homer.enable=true"
+      - "homer.service=PVR"
+      - "homer.name=Readarr"
+      - "homer.subtitle=Book Collection Manager"
+      - "homer.logo=assets/tools/readarr.png"
+      - "homer.target=_blank"
+      - "homer.priority=2"
+      - "homer.tag=${HOST_TAG}"
+      - "homer.url= https://readarr.${PUBLIC_DOMAIN}"
+
+  lidarr:
+    image: lscr.io/linuxserver/lidarr:nightly
+    container_name: lidarr
+    networks:
+      - default
+      - lb-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/lidarr:/config
+      - nas:/nas
+    ports:
+      - 8686:8686
+    restart: unless-stopped
+    labels:
+      - "homer.enable=true"
+      - "homer.service=PVR"
+      - "homer.name=Lidarr"
+      - "homer.subtitle=Music Collection Manager"
+      - "homer.logo=assets/tools/lidarr.png"
+      - "homer.target=_blank"
+      - "homer.priority=2"
+      - "homer.tag=${HOST_TAG}"
+      - "homer.url= https://lidarr.${PUBLIC_DOMAIN}"
+    
+volumes:
+  nas:
+    external: true
+
+networks:
+  default:
+  lb-network:
+    external: true

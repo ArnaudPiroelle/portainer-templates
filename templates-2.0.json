@@ -595,6 +595,41 @@
             "default": "Europe/Paris"
           }
         ]
+      },
+      {
+        "type": 3,
+        "title": "Requestrr",
+        "description": "Chatbot used to simplify using services like Sonarr/Radarr/Overseerr/Ombi via the use of chat",
+        "categories": ["chatbot"],
+        "platform": "linux",
+        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/requestrr/logo.png",        
+        "repository": {
+          "url": "https://github.com/ArnaudPiroelle/portainer-templates",
+          "stackfile": "stacks/requestrr/docker-compose.yml"
+        },
+        "env": [
+          {
+            "name": "DOCKER_DATA_FOLDER",
+            "label": "Docker host folder",
+            "description": "Host folder where containers will store data",
+            "default": "/data"
+          },
+          {
+            "name": "PUID",
+            "label": "User ID",
+            "default": "1000"
+          },
+          {
+            "name": "PGID",
+            "label": "User Group ID",
+            "default": "1000"
+          },
+          {
+            "name": "TZ",
+            "label": "Timezone",
+            "default": "Europe/Paris"
+          }
+        ]
       }
     ]
 }

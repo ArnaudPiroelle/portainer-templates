@@ -1,0 +1,21 @@
+---
+version: "3.8"
+services:
+  requestrr:
+    image: lscr.io/linuxserver/requestrr:latest
+    container_name: requestrr
+    networks:
+      - default
+      - lb-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/requestrr:/config
+    restart: unless-stopped
+
+networks:
+  default:
+  lb-network:
+    external: true

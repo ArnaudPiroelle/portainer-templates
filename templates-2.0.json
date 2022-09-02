@@ -630,6 +630,46 @@
             "default": "Europe/Paris"
           }
         ]
+      },
+      {
+        "type": 3,
+        "title": "Nextcloud",
+        "description": "A safe home for all your data. Access & share your files, calendars, contacts, mail & more from any device, on your terms.",
+        "categories": ["cloud"],
+        "platform": "linux",
+        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/nextcloud/logo.png",        
+        "repository": {
+          "url": "https://github.com/ArnaudPiroelle/portainer-templates",
+          "stackfile": "stacks/nextcloud/docker-compose.yml"
+        },
+        "env": [
+          {
+            "name": "DOCKER_DATA_FOLDER",
+            "label": "Docker host folder",
+            "description": "Host folder where containers will store data",
+            "default": "/data"
+          },
+          {
+            "name": "MYSQL_ROOT_PASSWORD",
+            "label": "MySQL root database",
+            "default": "nextcloud"
+          },
+          {
+            "name": "MYSQL_DATABASE",
+            "label": "MySQL nextcloud database",
+            "default": "nextcloud"
+          },
+          {
+            "name": "MYSQL_USER",
+            "label": "MySQL nextcloud username",
+            "default": "nextcloud"
+          },
+          {
+            "name": "MYSQL_PASSWORD",
+            "label": "MySQL nextcloud password",
+            "default": "nextcloud"
+          }
+        ]
       }
     ]
 }

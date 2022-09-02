@@ -1,0 +1,57 @@
+---
+version: '3'
+services:
+  db:
+    image: mariadb:10.5
+    container_name: nextcloud-db
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/nextcloud/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+
+  redis:
+    image: redis:alpine
+    container_name: nextcloud-redis
+    restart: always
+
+  app:
+    image: nextcloud:apache
+    container_name: nextcloud-web
+    restart: always
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/nextcloud/web:/var/www/html
+      - nas:/nas
+    environment:
+      - MYSQL_HOST=db
+      - REDIS_HOST=redis
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    depends_on:
+      - db
+      - redis
+
+  cron:
+    image: nextcloud:apache
+    restart: always
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/nextcloud/web:/var/www/html
+      - nas:/nas
+    entrypoint: /cron.sh
+    depends_on:
+      - db
+      - redis
+
+networks:
+  default:
+  lb-network:
+    external: true
+    
+volumes:
+  nas:
+    external: true

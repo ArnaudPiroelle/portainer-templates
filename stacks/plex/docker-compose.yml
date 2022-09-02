@@ -43,7 +43,7 @@ services:
       - lb-network
     restart: unless-stopped
     volumes:
-      - /data/tautulli:/config
+      - ${DOCKER_DATA_FOLDER}/tautulli:/config
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

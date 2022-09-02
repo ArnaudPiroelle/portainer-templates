@@ -1,0 +1,21 @@
+---
+version: '3.8'
+services:
+  heimdall:
+    image: lscr.io/linuxserver/heimdall:latest
+    container_name: heimdall
+    networks:
+      - default
+      - lb-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/heimdall:/config
+    restart: unless-stopped
+
+networks:
+  default:
+  lb-network:
+    external: true

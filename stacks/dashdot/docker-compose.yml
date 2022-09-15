@@ -1,0 +1,27 @@
+---
+version: '3.5'
+services:
+  dash:
+    image: mauricenino/dashdot:latest
+    container_name: dashdot
+    restart: unless-stopped
+    privileged: true
+    volumes:
+      - /:/mnt/host:ro
+    networks:
+      - default
+      - lb-network
+    labels:
+      - "homer.enable=true"
+      - "homer.service=Monitoring"
+      - "homer.name=Dash."
+      - "homer.subtitle=Server monitoring"
+      - "homer.logo=assets/tools/dashdot.png"
+      - "homer.target=_blank"
+      - "homer.tag=${HOST_TAG}"
+      - "homer.url= https://dash.${PUBLIC_DOMAIN}"
+
+networks:
+  default:
+  lb-network:
+    external: true

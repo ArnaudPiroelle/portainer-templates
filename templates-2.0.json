@@ -670,6 +670,19 @@
             "default": "nextcloud"
           }
         ]
+      },
+      {
+        "type": 3,
+        "title": "Dash.",
+        "description": "Dashboard with monitoring",
+        "categories": ["dashboard"],
+        "platform": "linux",
+        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/dashdot/logo.png",        
+        "repository": {
+          "url": "https://github.com/ArnaudPiroelle/portainer-templates",
+          "stackfile": "stacks/dashdot/docker-compose.yml"
+        },
+        "env": []
       }
     ]
 }

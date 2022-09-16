@@ -1,0 +1,18 @@
+---
+version: '3.5'
+services:
+  homarr:
+    image: ghcr.io/ajnart/homarr:latest
+    container_name: homarr
+    restart: unless-stopped
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/homarr/configs:/app/data/configs
+      - ${DOCKER_DATA_FOLDER}/homarr/icons:/app/public/icons
+    networks:
+      - default
+      - lb-network
+
+networks:
+  default:
+  lb-network:
+    external: true

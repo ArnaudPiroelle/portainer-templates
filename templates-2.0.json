@@ -682,7 +682,20 @@
           "url": "https://github.com/ArnaudPiroelle/portainer-templates",
           "stackfile": "stacks/dashdot/docker-compose.yml"
         },
-        "env": []
+        "env": [
+          {
+            "name": "HOST_TAG",
+            "label": "Host tag",
+            "description": "Tag used to identify host in dashboard",
+            "default": "TheBeast"
+          },
+          {
+            "name": "PUBLIC_DOMAIN",
+            "label": "Public domain",
+            "description": "Public domain use to generate dashboard link",
+            "default": "arnaudpiroelle.com"
+          }
+        ]
       }
     ]
 }

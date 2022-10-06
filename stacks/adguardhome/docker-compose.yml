@@ -1,0 +1,39 @@
+---
+version: "3.8"
+services:
+  pihole:
+    image: adguard/adguardhome
+    container_name: adguard
+    networks:
+      - default
+      - lb-network
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/adguardhome/work/:/opt/adguardhome/work/
+      - ${DOCKER_DATA_FOLDER}/adguardhome/conf/:/opt/adguardhome/conf/
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "853:853/tcp"
+      - "784:784/udp"
+      - "853:853/udp"
+      - "8853:8853/udp"
+      - "5443:5443/tcp"
+      - "5443:5443/udp"
+    environment:
+      - TZ=${TZ}
+    labels:
+      - "homer.enable=true"
+      - "homer.service=Tools"
+      - "homer.name=Adguard Home"
+      - "homer.subtitle=DNS-level Ad Blocking"
+      - "homer.logo=assets/tools/adguard.png"
+      - "homer.target=_blank"
+      - "homer.priority=3"
+      - "homer.tag=${HOST_TAG}"
+      - "homer.url= https://adguard.${PUBLIC_DOMAIN}/"
+    restart: unless-stopped
+    
+networks:
+  default:
+  lb-network:
+    external: true

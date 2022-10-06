@@ -696,6 +696,26 @@
             "default": "arnaudpiroelle.com"
           }
         ]
+      },
+      {
+        "type": 3,
+        "title": "Homarr",
+        "description": "Homarr is a simple and lightweight homepage for your server",
+        "categories": ["dashboard"],
+        "platform": "linux",
+        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/homarr/logo.png",        
+        "repository": {
+          "url": "https://github.com/ArnaudPiroelle/portainer-templates",
+          "stackfile": "stacks/homarr/docker-compose.yml"
+        },
+        "env": [
+          {
+            "name": "DOCKER_DATA_FOLDER",
+            "label": "Docker host folder",
+            "description": "Host folder where containers will store data",
+            "default": "/data"
+          }
+        ]
       }
     ]
 }

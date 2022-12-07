@@ -748,6 +748,38 @@
             "default": "arnaudpiroelle.com"
           }
         ]
+      },
+      {
+        "type": 3,
+        "title": "Uptime Kuma",
+        "description": "Network-wide Ad Blocking",
+        "categories": ["monitoring"],
+        "platform": "linux",
+        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/uptime/logo.png",        
+        "repository": {
+          "url": "https://github.com/ArnaudPiroelle/portainer-templates",
+          "stackfile": "stacks/uptime/docker-compose.yml"
+        },
+        "env": [
+          {
+            "name": "DOCKER_DATA_FOLDER",
+            "label": "Docker host folder",
+            "description": "Host folder where containers will store data",
+            "default": "/data"
+          },    
+          {
+            "name": "HOST_TAG",
+            "label": "Host tag",
+            "description": "Tag used to identify host in dashboard",
+            "default": "TheBeast"
+          },
+          {
+            "name": "PUBLIC_DOMAIN",
+            "label": "Public domain",
+            "description": "Public domain use to generate dashboard link",
+            "default": "arnaudpiroelle.com"
+          }
+        ]
       }
     ]
 }

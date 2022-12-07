@@ -1,0 +1,27 @@
+---
+version: '3.3'
+services:
+  uptime:
+    image: louislam/uptime-kuma:latest
+    container_name: uptime
+    networks:
+      - default
+      - lb-network
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/uptime:/app/data
+    restart: unless-stopped
+    labels:
+      - "homer.enable=true"
+      - "homer.service=Monitoring"
+      - "homer.name=Uptime"
+      - "homer.subtitle=Monitoring status service"
+      - "homer.logo=assets/tools/uptime-kuma.png"
+      - "homer.target=_blank"
+      - "homer.priority=2"
+      - "homer.tag=${HOST_TAG}"
+      - "homer.url= https://uptime.${PUBLIC_DOMAIN}"
+
+networks:
+  default:
+  lb-network:
+    external: true

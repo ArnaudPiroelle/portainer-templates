@@ -22,3 +22,27 @@ services:
       - "homer.tag=${HOST_TAG}"
       - "homer.url= https://homeassistant.${PUBLIC_DOMAIN}"
     restart: unless-stopped
+  
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/mosquitto:/mosquitto
+    command: "mosquitto -c /mosquitto-no-auth.conf"
+    restart: unless-stopped
+
+
+  zigbee2mqtt:
+    image: koenkk/zigbee2mqtt
+    container_name: zigbee2mqtt
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/zigbee2mqtt:/app/data
+      - /run/udev:/run/udev:ro
+    environment:
+      - TZ=Europe/Paris
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    restart: unless-stopped

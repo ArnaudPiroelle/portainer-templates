@@ -1,0 +1,17 @@
+version: "3.3"
+services:
+  homepage:
+    image: ghcr.io/benphelps/homepage:latest
+    container_name: homepage
+    networks:
+      - default
+      - lb-network
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/homepage:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock
+
+
+networks:
+  default:
+  lb-network:
+    external: true

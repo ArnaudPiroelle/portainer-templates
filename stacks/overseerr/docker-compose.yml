@@ -23,6 +23,12 @@ services:
       - "homer.priority=3"
       - "homer.tag=${HOST_TAG}"
       - "homer.url= https://overseerr.${PUBLIC_DOMAIN}"
+
+      - "homepage.group=PVR"
+      - "homepage.name=Overseerr"
+      - "homepage.description=Media Requester"
+      - "homepage.icon=overseerr.png"
+      - "homepage.href=https://overseerr.${PUBLIC_DOMAIN}/"
     restart: unless-stopped
 
 networks:

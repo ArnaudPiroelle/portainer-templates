@@ -19,6 +19,12 @@ services:
       - "homer.target=_blank"
       - "homer.url=https://dozzle.${PUBLIC_DOMAIN}"
       - "homer.priority=2"
+
+      - "homepage.group=Monitoring"
+      - "homepage.name=Dozzle"
+      - "homepage.description=Docker Logs Service"
+      - "homepage.icon=dozzle.png"
+      - "homepage.href=https://dozzle.${PUBLIC_DOMAIN}/"
     restart: unless-stopped
     
 networks:

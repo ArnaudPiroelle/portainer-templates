@@ -18,14 +18,20 @@ services:
       - TZ=${TZ}
     labels:
       - "homer.enable=true"
-      - "homer.service=Tools"
+      - "homer.service=Network"
       - "homer.name=Pi-hole"
       - "homer.subtitle=DNS-level Ad Blocking"
       - "homer.logo=assets/tools/pihole.png"
       - "homer.target=_blank"
       - "homer.priority=3"
       - "homer.tag=${HOST_TAG}"
-      - "homer.url= https://pihole.${PUBLIC_DOMAIN}/admin"
+      - "homer.url=https://pihole.${PUBLIC_DOMAIN}/admin"
+
+      - "homepage.group=Network"
+      - "homepage.name=Pi-hole"
+      - "homepage.description=DNS-level Ad Blocking"
+      - "homepage.icon=pihole.png"
+      - "homepage.href=https://pihole.${PUBLIC_DOMAIN}/admin"
     restart: unless-stopped
     
 networks:

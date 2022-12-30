@@ -23,7 +23,7 @@ services:
       - TZ=${TZ}
     labels:
       - "homer.enable=true"
-      - "homer.service=Tools"
+      - "homer.service=Network"
       - "homer.name=Adguard Home"
       - "homer.subtitle=DNS-level Ad Blocking"
       - "homer.logo=assets/tools/adguard.png"
@@ -31,6 +31,12 @@ services:
       - "homer.priority=3"
       - "homer.tag=${HOST_TAG}"
       - "homer.url= https://adguard.${PUBLIC_DOMAIN}/"
+
+      - "homepage.group=Network"
+      - "homepage.name=Adguard Home"
+      - "homepage.description=DNS-level Ad Blocking"
+      - "homepage.icon=adguard-home.png"
+      - "homepage.href=https://adguard.${PUBLIC_DOMAIN}/"
     restart: unless-stopped
     
 networks:

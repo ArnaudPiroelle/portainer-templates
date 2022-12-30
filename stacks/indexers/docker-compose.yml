@@ -30,6 +30,12 @@ services:
       - "homer.priority=2"
       - "homer.tag=${HOST_TAG}"
       - "homer.url= https://sonarr.${PUBLIC_DOMAIN}"
+
+      - "homepage.group=PVR"
+      - "homepage.name=Sonarr"
+      - "homepage.description=TV Show Collection Manager"
+      - "homepage.icon=sonarr.png"
+      - "homepage.href=https://sonarr.${PUBLIC_DOMAIN}/"
     restart: unless-stopped
     
   radarr:
@@ -56,6 +62,12 @@ services:
       - "homer.priority=2"
       - "homer.tag=${HOST_TAG}"
       - "homer.url= https://radarr.${PUBLIC_DOMAIN}"
+
+      - "homepage.group=PVR"
+      - "homepage.name=Radarr"
+      - "homepage.description=Movie Collection Manager"
+      - "homepage.icon=radarr.png"
+      - "homepage.href=https://radarr.${PUBLIC_DOMAIN}/"
     restart: unless-stopped
     
   prowlarr:
@@ -80,6 +92,12 @@ services:
       - "homer.priority=3"
       - "homer.tag=${HOST_TAG}"
       - "homer.url= https://prowlarr.${PUBLIC_DOMAIN}"
+
+      - "homepage.group=PVR"
+      - "homepage.name=Prowlarr"
+      - "homepage.description=Indexers Management"
+      - "homepage.icon=prowlarr.png"
+      - "homepage.href=https://prowlarr.${PUBLIC_DOMAIN}/"
     restart: unless-stopped
     
   bazarr:
@@ -105,6 +123,12 @@ services:
       - "homer.priority=1"
       - "homer.tag=${HOST_TAG}"
       - "homer.url= https://bazarr.${PUBLIC_DOMAIN}"
+
+      - "homepage.group=PVR"
+      - "homepage.name=Bazarr"
+      - "homepage.description=Subtitles Collection Manager"
+      - "homepage.icon=bazarr.png"
+      - "homepage.href=https://bazarr.${PUBLIC_DOMAIN}/"
     restart: unless-stopped
 
   readarr:
@@ -132,6 +156,12 @@ services:
       - "homer.tag=${HOST_TAG}"
       - "homer.url= https://readarr.${PUBLIC_DOMAIN}"
 
+      - "homepage.group=PVR"
+      - "homepage.name=Readarr"
+      - "homepage.description=Book Collection Manager"
+      - "homepage.icon=readarr.png"
+      - "homepage.href=https://readarr.${PUBLIC_DOMAIN}/"
+
   lidarr:
     image: lscr.io/linuxserver/lidarr:nightly
     container_name: lidarr
@@ -156,6 +186,12 @@ services:
       - "homer.priority=2"
       - "homer.tag=${HOST_TAG}"
       - "homer.url= https://lidarr.${PUBLIC_DOMAIN}"
+
+      - "homepage.group=PVR"
+      - "homepage.name=Lidarr"
+      - "homepage.description=Music Collection Manager"
+      - "homepage.icon=lidarr.png"
+      - "homepage.href=https://lidarr.${PUBLIC_DOMAIN}/"
     
 volumes:
   nas:

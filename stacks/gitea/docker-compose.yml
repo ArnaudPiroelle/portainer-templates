@@ -26,6 +26,12 @@ services:
       - "homer.priority=2"
       - "homer.tag=${HOST_TAG}"
       - "homer.url= https://git.${PUBLIC_DOMAIN}"
+
+      - "homepage.group=Tools"
+      - "homepage.name=Gitea"
+      - "homepage.description=Self-hosted git server"
+      - "homepage.icon=gitea.png"
+      - "homepage.href=https://git.${PUBLIC_DOMAIN}/"
     restart: unless-stopped
 
 networks:

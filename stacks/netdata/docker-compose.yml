@@ -31,6 +31,12 @@ services:
       - "homer.priority=2"
       - "homer.tag=${HOST_TAG}"
       - "homer.url= https://netdata.${PUBLIC_DOMAIN}"
+
+      - "homepage.group=Monitoring"
+      - "homepage.name=Netdata"
+      - "homepage.description=Monitoring Service"
+      - "homepage.icon=netdata.png"
+      - "homepage.href=https://netdata.${PUBLIC_DOMAIN}/"
     deploy:
       resources:
         reservations:

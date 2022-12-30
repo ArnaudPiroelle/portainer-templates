@@ -29,6 +29,12 @@ services:
       - "homer.priority=2"
       - "homer.tag=${HOST_TAG}"
       - "homer.url= https://plex.${PUBLIC_DOMAIN}"
+
+      - "homepage.group=Media"
+      - "homepage.name=Plex"
+      - "homepage.description=Plex Media Server"
+      - "homepage.icon=plex.png"
+      - "homepage.href=https://plex.${PUBLIC_DOMAIN}/"
     deploy:
       resources:
         reservations:

@@ -25,7 +25,13 @@ services:
       - "homer.target=_blank"
       - "homer.priority=2"
       - "homer.tag=${HOST_TAG}"
-      - "homer.url= https://code.${PUBLIC_DOMAIN}"
+      - "homer.url=https://code.${PUBLIC_DOMAIN}"
+
+      - "homepage.group=Tools"
+      - "homepage.name=VSCode"
+      - "homepage.description=Remote VS Code Editor"
+      - "homepage.icon=vscode.png"
+      - "homepage.href=https://code.${PUBLIC_DOMAIN}"
     restart: unless-stopped
     
 networks:

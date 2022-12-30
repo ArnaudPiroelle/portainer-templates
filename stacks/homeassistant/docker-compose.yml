@@ -21,6 +21,12 @@ services:
       - "homer.target=_blank"
       - "homer.tag=${HOST_TAG}"
       - "homer.url= https://homeassistant.${PUBLIC_DOMAIN}"
+
+      - "homepage.group=Tools"
+      - "homepage.name=Home Assistant"
+      - "homepage.description=Home automation service"
+      - "homepage.icon=home-assistant-circle.png"
+      - "homepage.href=https://homeassistant.${PUBLIC_DOMAIN}/"
     restart: unless-stopped
   
   mosquitto:

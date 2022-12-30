@@ -40,7 +40,13 @@ services:
       - "homer.target=_blank"
       - "homer.priority=2"
       - "homer.tag=${HOST_TAG}"
-      - "homer.url= https://transmission.${PUBLIC_DOMAIN}/transmission/web/"
+      - "homer.url=https://transmission.${PUBLIC_DOMAIN}/transmission/web/"
+
+      - "homepage.group=Downloads"
+      - "homepage.name=Transmission"
+      - "homepage.description=Transmission Over VPN"
+      - "homepage.icon=flood.png"
+      - "homepage.href=https://transmission.${PUBLIC_DOMAIN}/transmission/web/"
     restart: unless-stopped
 
 volumes:

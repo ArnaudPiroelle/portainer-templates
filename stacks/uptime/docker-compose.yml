@@ -19,7 +19,13 @@ services:
       - "homer.target=_blank"
       - "homer.priority=2"
       - "homer.tag=${HOST_TAG}"
-      - "homer.url= https://uptime.${PUBLIC_DOMAIN}"
+      - "homer.url=https://uptime.${PUBLIC_DOMAIN}"
+
+      - "homepage.group=Monitoring"
+      - "homepage.name=Uptime"
+      - "homepage.description=Monitoring status service"
+      - "homepage.icon=uptime-kuma.png"
+      - "homepage.href=https://uptime.${PUBLIC_DOMAIN}"
 
 networks:
   default:

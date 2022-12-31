@@ -1,0 +1,43 @@
+---
+version: "3.8"
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    runtime: nvidia
+    networks:
+      - default
+      - lb-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - JELLYFIN_PublishedServerUrl=${HOST_IP}
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/jellyfin:/config
+      - nas:/nas
+    ports:
+      - 7359:7359/udp
+      #- 1900:1900/udp
+    labels:
+      - "homepage.group=Media"
+      - "homepage.name=Jellyfin"
+      - "homepage.description=Jellyfin Media Server"
+      - "homepage.icon=jellyfin.png"
+      - "homepage.href=https://jellyfin.${PUBLIC_DOMAIN}/"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    restart: unless-stopped
+
+volumes:
+  nas:
+    external: true
+    
+networks:
+  default:
+  lb-network:
+    external: true

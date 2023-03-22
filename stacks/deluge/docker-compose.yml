@@ -1,0 +1,34 @@
+---
+version: "3.8"
+services:
+  deluge:
+    image: lscr.io/linuxserver/deluge:latest
+    container_name: deluge
+    networks:
+      - default
+      - lb-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/deluge:/config
+      - nas:/nas
+    ports:
+      - 58846:58846
+    labels:
+      - "homepage.group=Downloads"
+      - "homepage.name=Deluge"
+      - "homepage.description=Torrent client"
+      - "homepage.icon=deluge.png"
+      - "homepage.href=https://deluge.${PUBLIC_DOMAIN}/"
+    restart: unless-stopped
+
+volumes:
+  nas:
+    external: true
+    
+networks:
+  default:
+  lb-network:
+    external: true

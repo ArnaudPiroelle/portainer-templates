@@ -21,11 +21,13 @@ services:
       - OPENVPN_USER=${NORDVPN_USERNAME}
       - OPENVPN_PASSWORD=${NORDVPN_PASSWORD}
       - TZ=${TZ}
+    restart: unless-stopped
       
   socks5:
     image: serjs/go-socks5-proxy
     container_name: socks5
     network_mode: "service:gluetun"
+    restart: unless-stopped
 
 networks:
   default:

@@ -1,0 +1,33 @@
+version: "3"
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: gluetun
+    networks:
+      - default
+      - lb-network
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    ports:
+      - 1080:1080
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/gluetun:/gluetun
+    environment:
+      - VPN_SERVICE_PROVIDER=nordvpn
+      - VPN_TYPE=openvpn
+      - SERVER_REGIONS=France
+      - OPENVPN_USER=${NORDVPN_USERNAME}
+      - OPENVPN_PASSWORD=${NORDVPN_PASSWORD}
+      - TZ=${TZ}
+      
+  socks5:
+    image: serjs/go-socks5-proxy
+    container_name: socks5
+    network_mode: "service:gluetun"
+
+networks:
+  default:
+  lb-network:
+    external: true

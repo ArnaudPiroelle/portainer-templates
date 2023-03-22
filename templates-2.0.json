@@ -887,6 +887,49 @@
             "default": "arnaudpiroelle.com"
           }
         ]
+      },
+      {
+        "type": 3,
+        "title": "NordVPN + Proxy",
+        "description": "NordVPN and Socks5 proxy",
+        "categories": ["vpn", "proxy", "socks5"],
+        "platform": "linux",
+        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/nordvpn-proxy/logo.png",        
+        "repository": {
+          "url": "https://github.com/ArnaudPiroelle/portainer-templates",
+          "stackfile": "stacks/nordvpn-proxy/docker-compose.yml"
+        },
+        "env": [
+          {
+            "name": "DOCKER_DATA_FOLDER",
+            "label": "Docker host folder",
+            "description": "Host folder where containers will store data",
+            "default": "/data"
+          },
+          {
+            "name": "PUID",
+            "label": "User ID",
+            "default": "1000"
+          },
+          {
+            "name": "PGID",
+            "label": "User Group ID",
+            "default": "1000"
+          },      
+          {
+            "name": "TZ",
+            "label": "Timezone",
+            "default": "Europe/Paris"
+          },  
+          {
+            "name": "NORDVPN_USERNAME",
+            "label": "NordVPN username"
+          },
+          {
+            "name": "NORDVPN_PASSWORD",
+            "label": "NordVPN password"
+          }
+        ]
       }
     ]
 }

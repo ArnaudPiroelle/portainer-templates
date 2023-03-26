@@ -1,0 +1,28 @@
+---
+version: "3.8"
+services:
+  librespeed:
+    image: lscr.io/linuxserver/librespeed:latest
+    container_name: librespeed
+    networks:
+      - default
+      - lb-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - PASSWORD=${PASSWORD}
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/librespeed/config:/config
+    labels:
+      - "homepage.group=Monitoring"
+      - "homepage.name=LibreSpeed"
+      - "homepage.description=Lightweight Speedtest"
+      - "homepage.icon=librespeed.png"
+      - "homepage.href=https://librespeed.${PUBLIC_DOMAIN}/"
+    restart: unless-stopped
+
+networks:
+  default:
+  lb-network:
+    external: true

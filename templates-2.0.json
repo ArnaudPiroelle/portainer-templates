@@ -891,8 +891,8 @@
       {
         "type": 3,
         "title": "NordVPN + Proxy",
-        "description": "NordVPN and Socks5 proxy",
-        "categories": ["vpn", "proxy", "socks5"],
+        "description": "NordVPN and HTTP proxy",
+        "categories": ["vpn", "proxy"],
         "platform": "linux",
         "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/nordvpn-proxy/logo.png",        
         "repository": {

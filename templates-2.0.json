@@ -1011,6 +1011,42 @@
             "default": "arnaudpiroelle.com"
           }
         ]
+      },
+      {
+        "type": 3,
+        "title": "Flood",
+        "description": "A beautiful web UI for various torrent clients",
+        "categories": ["torrent", "webui"],
+        "platform": "linux",
+        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/flood/logo.png",        
+        "repository": {
+          "url": "https://github.com/ArnaudPiroelle/portainer-templates",
+          "stackfile": "stacks/flood/docker-compose.yml"
+        },
+        "env": [
+          {
+            "name": "DOCKER_DATA_FOLDER",
+            "label": "Docker host folder",
+            "description": "Host folder where containers will store data",
+            "default": "/data"
+          },
+          {
+            "name": "PUID",
+            "label": "User ID",
+            "default": "1000"
+          },
+          {
+            "name": "PGID",
+            "label": "User Group ID",
+            "default": "1000"
+          },    
+          {
+            "name": "PUBLIC_DOMAIN",
+            "label": "Public domain",
+            "description": "Public domain use to generate dashboard link",
+            "default": "arnaudpiroelle.com"
+          }
+        ]
       }
     ]
 }

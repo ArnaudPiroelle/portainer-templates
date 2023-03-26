@@ -1,0 +1,32 @@
+---
+version: "3.8"
+services:
+  flood:
+    image: jesec/flood
+    container_name: flood
+    user: ${PUID}:${PGID}
+    command: --allowedpath /nas
+    environment:
+      HOME: /config
+    networks:
+      - default
+      - lb-network
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/flood:/config
+      - nas:/nas
+    labels:
+      - "homepage.group=Downloads"
+      - "homepage.name=Flood"
+      - "homepage.description=A beautiful web UI for various torrent clients"
+      - "homepage.icon=flood.png"
+      - "homepage.href=https://flood.${PUBLIC_DOMAIN}/"
+    restart: unless-stopped
+
+networks:
+  default:
+  lb-network:
+    external: true
+
+volumes:
+  nas:
+    external: true

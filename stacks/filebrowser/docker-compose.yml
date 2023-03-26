@@ -1,0 +1,32 @@
+---
+version: "3.8"
+services:
+  filebrowser:
+    image: filebrowser/filebrowser:s6
+    container_name: filebrowser
+    networks:
+      - default
+      - lb-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/filebrowser/config:/config
+      - ${DOCKER_DATA_FOLDER}/filebrowser/database:/database
+      - nas:/nas
+    labels:
+      - "homepage.group=Tools"
+      - "homepage.name=Filebrowser"
+      - "homepage.description=File manager"
+      - "homepage.icon=filebrowser.png"
+      - "homepage.href=https://filebrowser.${PUBLIC_DOMAIN}/"
+    restart: unless-stopped
+
+networks:
+  default:
+  lb-network:
+    external: true
+
+volumes:
+  nas:
+    external: true

@@ -975,6 +975,42 @@
             "default": "arnaudpiroelle.com"
           }
         ]
+      },
+      {
+        "type": 3,
+        "title": "Filebrowser",
+        "description": "filebrowser provides a file managing interface within a specified directory and it can be used to upload, delete, preview, rename and edit your files. It allows the creation of multiple users and each user can have its own directory. It can be used as a standalone app.",
+        "categories": ["file"],
+        "platform": "linux",
+        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/filebrowser/logo.png",        
+        "repository": {
+          "url": "https://github.com/ArnaudPiroelle/portainer-templates",
+          "stackfile": "stacks/filebrowser/docker-compose.yml"
+        },
+        "env": [
+          {
+            "name": "DOCKER_DATA_FOLDER",
+            "label": "Docker host folder",
+            "description": "Host folder where containers will store data",
+            "default": "/data"
+          },
+          {
+            "name": "PUID",
+            "label": "User ID",
+            "default": "1000"
+          },
+          {
+            "name": "PGID",
+            "label": "User Group ID",
+            "default": "1000"
+          },    
+          {
+            "name": "PUBLIC_DOMAIN",
+            "label": "Public domain",
+            "description": "Public domain use to generate dashboard link",
+            "default": "arnaudpiroelle.com"
+          }
+        ]
       }
     ]
 }

@@ -1,0 +1,33 @@
+---
+version: "3.8"
+services:
+  duplicati:
+    image: lscr.io/linuxserver/duplicati:latest
+    container_name: duplicati
+    networks:
+      - default
+      - lb-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/duplicati/config:/config
+      - ${DOCKER_DATA_FOLDER}:/data
+      - backup:/backup
+    labels:
+      - "homepage.group=Tools"
+      - "homepage.name=Duplicati"
+      - "homepage.description=Backup software to store encrypted backups online"
+      - "homepage.icon=duplicati.png"
+      - "homepage.href=https://duplicati.${PUBLIC_DOMAIN}/"
+    restart: unless-stopped
+
+volumes:
+  backup:
+    external: true
+    
+networks:
+  default:
+  lb-network:
+    external: true

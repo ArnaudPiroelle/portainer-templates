@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+  speedtest-tracker:
+    image: 'ghcr.io/alexjustesen/speedtest-tracker:latest'
+    container_name: speedtest-tracker
+    networks:
+      - default
+      - lb-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/speedtest-tracker/config:/config
+    labels:
+      - "homepage.group=Monitoring"
+      - "homepage.name=Speedtest"
+      - "homepage.description=Speedtest Tracker"
+      - "homepage.icon=speedtest-tracker.png"
+      - "homepage.href=https://speedtest.${PUBLIC_DOMAIN}/"
+    restart: unless-stopped
+    
+networks:
+  default:
+  lb-network:
+    external: true

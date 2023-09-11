@@ -1,7 +1,7 @@
 version: "3"
 services:
   gluetun:
-    image: qmcgaw/gluetun
+    image: qmcgaw/gluetun:v3.35.0
     container_name: gluetun
     networks:
       - default
@@ -17,9 +17,10 @@ services:
     environment:
       - VPN_SERVICE_PROVIDER=nordvpn
       - VPN_TYPE=openvpn
-      - SERVER_REGIONS=France
+      - SERVER_COUNTRIES=France
       - OPENVPN_USER=${NORDVPN_USERNAME}
       - OPENVPN_PASSWORD=${NORDVPN_PASSWORD}
+      - OPENVPN_PROTOCOL=tcp
       - TZ=${TZ}
       - HTTPPROXY=on
       - HTTPPROXY_STEALTH=on

@@ -1,0 +1,31 @@
+---
+version: "3.8"
+services:
+  pureftp:
+    image: stilliard/pure-ftpd
+    container_name: pure-ftp
+    networks:
+      - default
+    ports:
+      - "21:21"
+      - "30000-30009:30000-30009"
+    environment:
+      ADDED_FLAGS: "--tls=1 -d -d"
+      FTP_USER_NAME: ${USERNAME}
+      FTP_USER_PASS: ${PASSWORD}
+      FTP_USER_HOME: /nas
+      TLS_USE_DSAPRAM: "true"
+      TLS_CN: FTP server
+      TLS_ORG: ${USERNAME}
+      TLS_C: FR
+      PUBLICHOST: ${PUBLIC_DOMAIN}
+    volumes:
+      - nas:/nas
+      - ${DOCKER_DATA_FOLDER}/pureftp:/etc/ssl/private/
+
+volumes:
+  nas:
+    external: true
+
+networks:
+  default:

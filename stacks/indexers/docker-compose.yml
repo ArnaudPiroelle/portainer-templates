@@ -4,6 +4,11 @@ services:
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr:latest
     container_name: flaresolverr
+    environment:
+      - TZ=${TZ}
+      - CAPTCHA_SOLVER=none
+      - LOG_LEVEL=debug
+      - LOG_HTML=false
     restart: unless-stopped
     
   sonarr:

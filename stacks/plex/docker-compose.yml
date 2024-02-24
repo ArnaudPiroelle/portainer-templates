@@ -25,6 +25,9 @@ services:
       - "homepage.description=Plex Media Server"
       - "homepage.icon=plex.png"
       - "homepage.href=https://plex.${PUBLIC_DOMAIN}/"
+      - "homepage.widget.type=tautulli"
+      - "homepage.widget.url=http://tautulli:8181"
+      - "homepage.widget.key=${TAUTULLI_API_KEY}"
     deploy:
       resources:
         reservations:
@@ -45,15 +48,11 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
     labels:
-      - "homer.enable=true"
-      - "homer.service=Monitoring"
-      - "homer.name=Tautulli"
-      - "homer.subtitle=Plex Activity Monitor"
-      - "homer.logo=assets/tools/tautulli.png"
-      - "homer.target=_blank"
-      - "homer.priority=2"
-      - "homer.tag=${HOST_TAG}"
-      - "homer.url= https://tautulli.${PUBLIC_DOMAIN}"
+      - "homepage.group=PVR"
+      - "homepage.name=Tautulli"
+      - "homepage.description=Plex Activity Monitor"
+      - "homepage.icon=tautulli.png"
+      - "homepage.href=https://tautulli.${PUBLIC_DOMAIN}/"
       
 volumes:
   nas:

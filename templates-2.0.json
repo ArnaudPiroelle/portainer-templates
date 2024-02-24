@@ -305,6 +305,11 @@
             "label": "Public domain",
             "description": "Public domain use to generate dashboard link",
             "default": "arnaudpiroelle.com"
+          },
+          {
+            "name": "TAUTULLI_API_KEY",
+            "label": "Tautulli API Key",
+            "description": "Use to connect homepage widget to tautulli api"
           }
         ]
       },

@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    container_name: n8n
+    restart: unless-stopped
+    networks:
+      - default
+      - lb-network
+    labels:
+      - "homepage.group=Tools"
+      - "homepage.name=n8n"
+      - "homepage.description=Workflow automation"
+      - "homepage.icon=n8n.png"
+      - "homepage.href=https://n8n.${PUBLIC_DOMAIN}/"
+    environment:
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - NODE_ENV=production
+      - GENERIC_TIMEZONE=${TZ}
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/n8n:/home/node/.n8n
+
+networks:
+  default:
+  lb-network:
+    external: true

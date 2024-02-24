@@ -933,6 +933,45 @@
       },
       {
         "type": 3,
+        "title": "NordVPN (Wireguard) + Proxy",
+        "description": "NordVPN and HTTP proxy",
+        "categories": ["vpn", "proxy", "wireguard"],
+        "platform": "linux",
+        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/nordvpn-proxy-wireguard/logo.png",        
+        "repository": {
+          "url": "https://github.com/ArnaudPiroelle/portainer-templates",
+          "stackfile": "stacks/nordvpn-proxy-wireguard/docker-compose.yml"
+        },
+        "env": [
+          {
+            "name": "DOCKER_DATA_FOLDER",
+            "label": "Docker host folder",
+            "description": "Host folder where containers will store data",
+            "default": "/data"
+          },
+          {
+            "name": "PUID",
+            "label": "User ID",
+            "default": "1000"
+          },
+          {
+            "name": "PGID",
+            "label": "User Group ID",
+            "default": "1000"
+          },      
+          {
+            "name": "TZ",
+            "label": "Timezone",
+            "default": "Europe/Paris"
+          },  
+          {
+            "name": "WIREGUARD_PRIVATE_KEY",
+            "label": "NordVPN wireguard private key"
+          }
+        ]
+      },
+      {
+        "type": 3,
         "title": "LibreSpeed",
         "description": "Lightweight Speedtest",
         "categories": ["speedtest"],

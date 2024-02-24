@@ -1,0 +1,41 @@
+version: "3"
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: gluetun
+    networks:
+      - default
+      - lb-network
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    ports:
+      - 8888:8888
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/gluetun:/gluetun
+    environment:
+      - VPN_SERVICE_PROVIDER=nordvpn
+      - SERVER_COUNTRIES=France
+      - VPN_TYPE=wireguard
+      - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
+      - OPENVPN_PROTOCOL=tcp
+      - TZ=${TZ}
+      - HTTPPROXY=on
+      - HTTPPROXY_STEALTH=on
+    labels:
+      - "homepage.group=Downloads"
+      - "homepage.name=NordVPN"
+      - "homepage.description=Gluetun proxy"
+      - "homepage.icon=nordvpn.svg"
+      - "homepage.href=#"
+      - "homepage.widget.type=gluetun"
+      - "homepage.widget.url=http://gluetun:8000"
+    dns:
+      - 1.1.1.1
+    restart: unless-stopped
+
+networks:
+  default:
+  lb-network:
+    external: true

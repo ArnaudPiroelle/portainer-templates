@@ -1,0 +1,40 @@
+---
+version: "3.8"
+services:
+  deluge:
+    image: lscr.io/linuxserver/qbittorrent
+    container_name: qbittorrent
+    networks:
+      - default
+      - lb-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - WEBUI_PORT=8080
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/qbittorrent:/config
+      - nas:/nas
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+    labels:
+      - "homepage.group=Downloads"
+      - "homepage.name=Qbittorrent "
+      - "homepage.description=Torrent client"
+      - "homepage.icon=qbittorrent.png"
+      - "homepage.href=https://qbittorrent.${PUBLIC_DOMAIN}/"
+      - "homepage.widget.type=qbittorrent"
+      - "homepage.widget.url=http://qbittorrent:8080"
+      - "homepage.widget.username=${QBITTORRENT_USERNAME}"
+      - "homepage.widget.password=${QBITTORRENT_PASSWORD}"
+    restart: unless-stopped
+
+volumes:
+  nas:
+    external: true
+    
+networks:
+  default:
+  lb-network:
+    external: true

@@ -31,15 +31,22 @@ services:
     command: "mosquitto -c /mosquitto-no-auth.conf"
     restart: unless-stopped
 
-
   zigbee2mqtt:
     image: koenkk/zigbee2mqtt
     container_name: zigbee2mqtt
+    networks:
+      - default
+      - lb-network
     volumes:
       - ${DOCKER_DATA_FOLDER}/zigbee2mqtt:/app/data
       - /run/udev:/run/udev:ro
     environment:
-      - TZ=Europe/Paris
+      - TZ=${TZ}
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
     restart: unless-stopped
+    
+networks:
+  default:
+  lb-network:
+    external: true

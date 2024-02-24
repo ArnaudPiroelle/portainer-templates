@@ -17,16 +17,6 @@ services:
     ports:
       - 2222:22
     labels:
-      - "homer.enable=true"
-      - "homer.service=Tools"
-      - "homer.name=Gitea"
-      - "homer.subtitle=Self-hosted git server"
-      - "homer.logo=assets/tools/gitea.png"
-      - "homer.target=_blank"
-      - "homer.priority=2"
-      - "homer.tag=${HOST_TAG}"
-      - "homer.url= https://git.${PUBLIC_DOMAIN}"
-
       - "homepage.group=Tools"
       - "homepage.name=Gitea"
       - "homepage.description=Self-hosted git server"

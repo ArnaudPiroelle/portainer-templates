@@ -32,16 +32,6 @@ services:
       - TRANSMISSION_RPC_USERNAME=${TRANSMISSION_USERNAME}
       - TRANSMISSION_RPC_PASSWORD=${TRANSMISSION_PASSWORD}
     labels:
-      - "homer.enable=true"
-      - "homer.service=Downloads"
-      - "homer.name=Transmission"
-      - "homer.subtitle=Transmission Over VPN"
-      - "homer.logo=assets/tools/flood.png"
-      - "homer.target=_blank"
-      - "homer.priority=2"
-      - "homer.tag=${HOST_TAG}"
-      - "homer.url=https://transmission.${PUBLIC_DOMAIN}/transmission/web/"
-
       - "homepage.group=Downloads"
       - "homepage.name=Transmission"
       - "homepage.description=Transmission Over VPN"

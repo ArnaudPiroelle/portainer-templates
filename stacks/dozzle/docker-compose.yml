@@ -10,16 +10,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     labels:
-      - "homer.enable=true"
-      - "homer.service=Monitoring"
-      - "homer.name=Dozzle"
-      - "homer.subtitle=Docker Logs Service"
-      - "homer.logo=assets/tools/dozzle.png"
-      - "homer.tag=${HOST_TAG}"
-      - "homer.target=_blank"
-      - "homer.url=https://dozzle.${PUBLIC_DOMAIN}"
-      - "homer.priority=2"
-
       - "homepage.group=Monitoring"
       - "homepage.name=Dozzle"
       - "homepage.description=Docker Logs Service"

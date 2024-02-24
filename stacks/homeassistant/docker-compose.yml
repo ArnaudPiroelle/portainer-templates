@@ -13,15 +13,6 @@ services:
       - ${DOCKER_DATA_FOLDER}/homeassistant/config:/config
       - /etc/localtime:/etc/localtime:ro
     labels:
-      - "homer.enable=true"
-      - "homer.service=Tools"
-      - "homer.name=Home Assistant"
-      - "homer.subtitle=Home automation service"
-      - "homer.logo=assets/tools/homeassistant.png"
-      - "homer.target=_blank"
-      - "homer.tag=${HOST_TAG}"
-      - "homer.url= https://homeassistant.${PUBLIC_DOMAIN}"
-
       - "homepage.group=Tools"
       - "homepage.name=Home Assistant"
       - "homepage.description=Home automation service"

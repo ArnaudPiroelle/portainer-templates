@@ -12,20 +12,12 @@ services:
       - default
       - lb-network
     labels:
-      - "homer.enable=true"
-      - "homer.service=Monitoring"
-      - "homer.name=Dash."
-      - "homer.subtitle=Server monitoring"
-      - "homer.logo=assets/tools/dashdot.png"
-      - "homer.target=_blank"
-      - "homer.tag=${HOST_TAG}"
-      - "homer.url= https://dash.${PUBLIC_DOMAIN}"
-
       - "homepage.group=Monitoring"
       - "homepage.name=Dash."
       - "homepage.description=Server monitoring"
       - "homepage.icon=dashdot.png"
       - "homepage.href=https://dash.${PUBLIC_DOMAIN}/"
+      
 networks:
   default:
   lb-network:

@@ -14,16 +14,6 @@ services:
     volumes:
       - ${DOCKER_DATA_FOLDER}/overseerr:/config
     labels:
-      - "homer.enable=true"
-      - "homer.service=PVR"
-      - "homer.name=Overseerr"
-      - "homer.subtitle=Media Requester"
-      - "homer.logo=assets/tools/overseerr.png"
-      - "homer.target=_blank"
-      - "homer.priority=3"
-      - "homer.tag=${HOST_TAG}"
-      - "homer.url= https://overseerr.${PUBLIC_DOMAIN}"
-
       - "homepage.group=PVR"
       - "homepage.name=Overseerr"
       - "homepage.description=Media Requester"

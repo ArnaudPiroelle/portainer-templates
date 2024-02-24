@@ -20,16 +20,6 @@ services:
       - PLEX_CLAIM=${PLEX_CLAIM}
       - NVIDIA_VISIBLE_DEVICES=all
     labels:
-      - "homer.enable=true"
-      - "homer.service=Media"
-      - "homer.name=Plex"
-      - "homer.subtitle=Plex Media Server"
-      - "homer.logo=assets/tools/plex.png"
-      - "homer.target=_blank"
-      - "homer.priority=2"
-      - "homer.tag=${HOST_TAG}"
-      - "homer.url= https://plex.${PUBLIC_DOMAIN}"
-
       - "homepage.group=Media"
       - "homepage.name=Plex"
       - "homepage.description=Plex Media Server"

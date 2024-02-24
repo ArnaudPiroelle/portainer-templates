@@ -21,16 +21,6 @@ services:
       - ${DOCKER_DATA_FOLDER}/sonarr:/config
       - nas:/nas
     labels:
-      - "homer.enable=true"
-      - "homer.service=PVR"
-      - "homer.name=Sonarr"
-      - "homer.subtitle=TV Show Collection Manager"
-      - "homer.logo=assets/tools/sonarr.png"
-      - "homer.target=_blank"
-      - "homer.priority=2"
-      - "homer.tag=${HOST_TAG}"
-      - "homer.url= https://sonarr.${PUBLIC_DOMAIN}"
-
       - "homepage.group=PVR"
       - "homepage.name=Sonarr"
       - "homepage.description=TV Show Collection Manager"
@@ -53,16 +43,6 @@ services:
       - ${DOCKER_DATA_FOLDER}/radarr:/config
       - nas:/nas
     labels:
-      - "homer.enable=true"
-      - "homer.service=PVR"
-      - "homer.name=Radarr"
-      - "homer.subtitle=Movie Collection Manager"
-      - "homer.logo=assets/tools/radarr.png"
-      - "homer.target=_blank"
-      - "homer.priority=2"
-      - "homer.tag=${HOST_TAG}"
-      - "homer.url= https://radarr.${PUBLIC_DOMAIN}"
-
       - "homepage.group=PVR"
       - "homepage.name=Radarr"
       - "homepage.description=Movie Collection Manager"
@@ -83,16 +63,6 @@ services:
     volumes:
       - ${DOCKER_DATA_FOLDER}/prowlarr:/config
     labels:
-      - "homer.enable=true"
-      - "homer.service=PVR"
-      - "homer.name=Prowlarr"
-      - "homer.subtitle=Indexers Management"
-      - "homer.logo=assets/tools/prowlarr.png"
-      - "homer.target=_blank"
-      - "homer.priority=3"
-      - "homer.tag=${HOST_TAG}"
-      - "homer.url= https://prowlarr.${PUBLIC_DOMAIN}"
-
       - "homepage.group=PVR"
       - "homepage.name=Prowlarr"
       - "homepage.description=Indexers Management"
@@ -114,16 +84,6 @@ services:
       - ${DOCKER_DATA_FOLDER}/bazarr:/config
       - nas:/nas
     labels:
-      - "homer.enable=true"
-      - "homer.service=PVR"
-      - "homer.name=Bazarr"
-      - "homer.subtitle=Subtitles Collection Manager"
-      - "homer.logo=assets/tools/bazarr.png"
-      - "homer.target=_blank"
-      - "homer.priority=1"
-      - "homer.tag=${HOST_TAG}"
-      - "homer.url= https://bazarr.${PUBLIC_DOMAIN}"
-
       - "homepage.group=PVR"
       - "homepage.name=Bazarr"
       - "homepage.description=Subtitles Collection Manager"
@@ -146,16 +106,6 @@ services:
       - nas:/nas
     restart: unless-stopped
     labels:
-      - "homer.enable=true"
-      - "homer.service=PVR"
-      - "homer.name=Readarr"
-      - "homer.subtitle=Book Collection Manager"
-      - "homer.logo=assets/tools/readarr.png"
-      - "homer.target=_blank"
-      - "homer.priority=2"
-      - "homer.tag=${HOST_TAG}"
-      - "homer.url= https://readarr.${PUBLIC_DOMAIN}"
-
       - "homepage.group=PVR"
       - "homepage.name=Readarr"
       - "homepage.description=Book Collection Manager"
@@ -177,16 +127,6 @@ services:
       - nas:/nas
     restart: unless-stopped
     labels:
-      - "homer.enable=true"
-      - "homer.service=PVR"
-      - "homer.name=Lidarr"
-      - "homer.subtitle=Music Collection Manager"
-      - "homer.logo=assets/tools/lidarr.png"
-      - "homer.target=_blank"
-      - "homer.priority=2"
-      - "homer.tag=${HOST_TAG}"
-      - "homer.url= https://lidarr.${PUBLIC_DOMAIN}"
-
       - "homepage.group=PVR"
       - "homepage.name=Lidarr"
       - "homepage.description=Music Collection Manager"

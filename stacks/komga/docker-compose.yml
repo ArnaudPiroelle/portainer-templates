@@ -12,15 +12,6 @@ services:
       - nas:/nas
       - ${DOCKER_DATA_FOLDER}/komga:/config
     labels:
-      - "homer.enable=true"
-      - "homer.service=Media"
-      - "homer.name=Komga"
-      - "homer.subtitle=Manga Collection Manager"
-      - "homer.logo=assets/tools/komga.png"
-      - "homer.target=_blank"
-      - "homer.tag=${HOST_TAG}"
-      - "homer.url= https://komga.${PUBLIC_DOMAIN}"
-
       - "homepage.group=Media"
       - "homepage.name=Komga"
       - "homepage.description=Manga Collection Manager"

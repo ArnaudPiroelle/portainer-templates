@@ -1284,6 +1284,53 @@
             "label": "qBittorrent password"
           }
         ]
+      },
+      {
+        "type": 3,
+        "title": "Syncthing",
+        "description": "Syncthing is a continuous file synchronization program.",
+        "categories": ["backup", "sync"],
+        "platform": "linux",
+        "logo": "https://raw.githubusercontent.com/ArnaudPiroelle/portainer-templates/master/stacks/syncthing/logo.svg",        
+        "repository": {
+          "url": "https://github.com/ArnaudPiroelle/portainer-templates",
+          "stackfile": "stacks/syncthing/docker-compose.yml"
+        },
+        "env": [
+          {
+            "name": "DOCKER_DATA_FOLDER",
+            "label": "Docker host folder",
+            "description": "Host folder where containers will store data",
+            "default": "/data"
+          },
+          {
+            "name": "PUID",
+            "label": "User ID",
+            "default": "1000"
+          },
+          {
+            "name": "PGID",
+            "label": "User Group ID",
+            "default": "1000"
+          },      
+          {
+            "name": "TZ",
+            "label": "Timezone",
+            "default": "Europe/Paris"
+          },  
+          {
+            "name": "PUBLIC_DOMAIN",
+            "label": "Public domain",
+            "description": "Public domain use to generate dashboard link",
+            "default": "arnaudpiroelle.com"
+          }, 
+          {
+            "name": "HOST_NAME",
+            "label": "Hostname",
+            "description": "Used to advertise syncthing server name",
+            "default": "TheBeast"
+          }
+        ]
       }
     ]
 }

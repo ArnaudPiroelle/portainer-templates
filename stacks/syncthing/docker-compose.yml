@@ -1,0 +1,37 @@
+---
+version: "3.8"
+services:
+  syncthing:
+    image: lscr.io/linuxserver/syncthing:latest
+    container_name: syncthing
+    hostname: ${HOST_NAME}
+    networks:
+      - default
+      - lb-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_DATA_FOLDER}/syncthing:/config
+      - backup:/backup
+    ports:
+      - 22000:22000/tcp
+      - 22000:22000/udp
+      - 21027:21027/udp
+    labels:
+      - "homepage.group=Tools"
+      - "homepage.name=Synchting"
+      - "homepage.description=Continuous file synchronization"
+      - "homepage.icon=syncthing.svg"
+      - "homepage.href=https://syncthing.${PUBLIC_DOMAIN}/"
+    restart: unless-stopped
+
+volumes:
+  backup:
+    external: true
+
+networks:
+  default:
+  lb-network:
+    external: true
